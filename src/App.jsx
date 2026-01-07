@@ -24,7 +24,6 @@ function App() {
             .finally(() => setLoading(false));
     }, [dispatch]);
 
-    // return (<><Landing/></>)
     return !loading ? (
         <div className="min-h-screen flex flex-wrap content-between bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
             <div className="w-full block">

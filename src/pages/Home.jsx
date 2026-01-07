@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard, Button } from "../components";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Home() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
+    const authStatus = useSelector((state) => state.auth.status);
 
     useEffect(() => {
         let isMounted = true;
@@ -97,30 +99,44 @@ function Home() {
                         </div>
                         <div className="relative px-8 py-16 sm:px-16 sm:py-24 lg:py-32 lg:px-32 flex flex-col items-center text-center">
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                                Welcome to MegaBlog
+                                {authStatus ? "Welcome Back!" : "Welcome to MegaBlog"}
                             </h1>
                             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
-                                Share your thoughts, discover amazing stories,
-                                and connect with writers from around the world.
-                                Join our growing community of bloggers today!
+                                {authStatus 
+                                    ? "Ready to share your next big idea? Start writing today and inspire the community."
+                                    : "Share your thoughts, discover amazing stories, and connect with writers from around the world. Join our growing community of bloggers today!"
+                                }
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Button
-                                    onClick={() => navigate("/login")}
-                                    variant="default"
-                                    size="lg"
-                                    className="shadow-lg"
-                                >
-                                    Login
-                                </Button>
-                                <Button
-                                    onClick={() => navigate("/signup")}
-                                    variant="outline"
-                                    size="lg"
-                                    className="bg-white/10 border-white text-white hover:bg-white/20"
-                                >
-                                    Sign Up
-                                </Button>
+                                {!authStatus ? (
+                                    <>
+                                        <Button
+                                            onClick={() => navigate("/login")}
+                                            variant="default"
+                                            size="lg"
+                                            className="shadow-lg"
+                                        >
+                                            Login
+                                        </Button>
+                                        <Button
+                                            onClick={() => navigate("/signup")}
+                                            variant="outline"
+                                            size="lg"
+                                            className="bg-white/10 border-white text-white hover:bg-white/20"
+                                        >
+                                            Sign Up
+                                        </Button>
+                                    </>
+                                ) : (
+                                    <Button
+                                        onClick={() => navigate("/add-post")}
+                                        variant="default"
+                                        size="lg"
+                                        className="shadow-lg"
+                                    >
+                                        Start Writing
+                                    </Button>
+                                )}
                             </div>
                         </div>
                     </div>

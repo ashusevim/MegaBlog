@@ -100,7 +100,7 @@ function Login() {
                                     })}
                                 />
                                 <div className="mt-2 text-right">
-                                    <Link to="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">
+                                    <Link to="/contact" className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors">
                                         Forgot password?
                                     </Link>
                                 </div>

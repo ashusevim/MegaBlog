@@ -85,6 +85,7 @@ export class AuthService {
 
 	// Note: Users API requires admin access which is not available on client
 	// Instead, we'll store author name with posts or use a workaround
+	// eslint-disable-next-line no-unused-vars
 	async getUserNameById(userId) {
 		try {
 			// This is a client-side limitation - we can't fetch other users by ID without admin access

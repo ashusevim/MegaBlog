@@ -13,6 +13,11 @@ import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
 import Home from "./pages/Home.jsx";
 import Profile from "./pages/Profile.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
     {
@@ -41,12 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/all-posts",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <AllPosts />
-                    </AuthLayout>
-                ),
+                element: <AllPosts />,
             },
             {
                 path: "/add-post",
@@ -78,6 +78,26 @@ const router = createBrowserRouter([
             {
                 path: "/post/:slug",
                 element: <Post />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },
+            {
+                path: "/contact",
+                element: <Contact />,
+            },
+            {
+                path: "/privacy",
+                element: <Privacy />,
+            },
+            {
+                path: "/terms",
+                element: <Terms />,
+            },
+            {
+                path: "*",
+                element: <NotFound />,
             },
         ],
     },

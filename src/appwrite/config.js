@@ -128,6 +128,7 @@ export class Service {
 		return this.storage.getFileDownload(conf.appwriteBucketId, fileId);
 	}
 
+	// eslint-disable-next-line no-unused-vars
 	async getUserName(userId) {
 		// Note: Due to Appwrite client SDK limitations, we cannot fetch user data by ID without admin access
 		// The recommended approach is to store the author name in the post document when creating it
