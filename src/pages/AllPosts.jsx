@@ -14,7 +14,7 @@ function AllPosts() {
 		const fetchPosts = async () => {
 			setIsLoading(true);
 			try {
-				const response = await appwriteService.getAllPosts([]);
+				const response = await appwriteService.getAllPosts();
 				if (isMounted && response) {
 					// Add author information to posts (from post document or default to Anonymous)
 					const postsWithAuthors = response.documents.map((post) => {
